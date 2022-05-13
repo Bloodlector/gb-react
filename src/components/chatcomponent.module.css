@@ -1,0 +1,35 @@
+.main {
+    text-align: center;
+    font-size: 30px;
+    color: blue;
+    margin: 50px auto;        
+    width: 500px;
+    height: 800px;
+    border: 1px solid green;
+}
+.chatbox {
+    width: 400px;
+    height: 550px;
+    border: 1px solid black;
+    margin: auto;
+    color: black;
+    font-size: 10px;
+}
+.chatform {
+    margin: auto;
+    width: 300px;
+    height: 60px;
+    margin-top: 5px;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 10px;    
+}
+.chatsubmit {
+    width: 100px;
+    height: 60px;
+    border: 1px solid green;
+    border-radius: 20px;
+    background-color: cadetblue;
+    color: black;
+    font-weight: bold;
+}

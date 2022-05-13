@@ -9,10 +9,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ChatComponent />
-    {/* <Message 
-    text='Текст домашки' />
-    <ClassComponent />
-    <FunctionComponent /> */}
   </React.StrictMode>
 );
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from "../components/chatcomponent.module.css"
 
 export const ChatComponent = () => {
     const [value, addValue] = useState('Введите сообщение');
@@ -25,18 +26,19 @@ export const ChatComponent = () => {
       
     return (
       
-<div>
-    <div>
+<div className={styles.main}>
+Чат: <br/>
+    <div className={styles.chatbox}>
     {messageList.map((message)=>(
                             <h1>{message.author}: {message.text}</h1>                            
                         ))}
     </div>
-<form onSubmit={makeMessage}>
+<form onSubmit={makeMessage} className={styles.chatform}>
           <label>
-            Чат:
-            <textarea value={value} onChange={handleChange} />
+            
+            <textarea value={value} onChange={handleChange} className={styles.chatform}/>
           </label>
-          <input type="submit" value="Submit" id="submit" />
+          <input type="submit" value="Отправить" id="submit" className={styles.chatsubmit}/>
         </form>
 </div>
     );
