@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Message } from './components/message.js'
+// import { Message } from './components/message.js';
+// import { ClassComponent } from './components/ClassComponent';
+// import { FunctionComponent } from './components/FunctionComponent';
+import { ChatComponent } from './components/ChatComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Message text='Текст домашки' />
+    <ChatComponent />
+    {/* <Message 
+    text='Текст домашки' />
+    <ClassComponent />
+    <FunctionComponent /> */}
   </React.StrictMode>
 );
 
