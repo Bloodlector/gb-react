@@ -1,15 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-// import { Message } from './components/message.js';
-// import { ClassComponent } from './components/ClassComponent';
-// import { FunctionComponent } from './components/FunctionComponent';
-import { ChatComponent } from './components/ChatComponent';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { ThemeProvider, createTheme } from '@mui/material'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Header } from './components'
+import { ProfilePage, ChatPage } from './pages'
+import './global.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+const theme = createTheme({
+  myPalette: {
+    color: 'red',
+  },
+  palette: {},
+})
+
 root.render(
   <React.StrictMode>
-    <ChatComponent />
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Header />
+
+        <Routes>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/chat/*" element={<ChatPage />} />
+          <Route path="/" element={<ProfilePage />} />
+          <Route path="*" element={<h1>404</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
-);
-
-
+)

@@ -4,6 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/components/ChatComponent
+/src/components/ClassComponent
+/src/components/FunctionComponent
+.npmrc
+
 
 # testing
 /coverage
