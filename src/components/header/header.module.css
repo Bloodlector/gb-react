@@ -22,7 +22,9 @@
   .header {
     flex: none;
     background-color: #5459a0;
+    height: 170px;
     border-bottom: 1px solid #000;
+    padding-top: 20px;
   }
   
   .content {
@@ -92,4 +94,18 @@ color: white;
     justify-content: space-between;
     align-items: center;
     width: 120px;
+  }
+  .link {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.5s;
+  }
+  
+  .link:hover {
+    color: rgb(243, 219, 219);
+    text-decoration: underline;
+  }
+  
+  .appBar {
+    border-bottom: 1px solid #000;
   }

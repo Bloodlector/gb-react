@@ -39,3 +39,8 @@ button:hover, a:hover {
     height: 100%;
     padding-top: 50px;
 }
+
+.pagination {
+    display: flex;
+    margin-bottom: 20px;
+}
