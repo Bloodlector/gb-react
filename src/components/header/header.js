@@ -9,15 +9,21 @@ import {
   IconButton,
   Toolbar,
   Box,
-  AppBar,
 } from '@mui/material'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../api/firebase'
 import { ThemeContext } from '../../theme-context'
 
-const pages = [
-  { title: 'Home', to: '/' },
+const menuWithSession = [
   { title: 'Chat', to: '/chat' },
   { title: 'Profile', to: '/profile' },
   { title: 'Gists', to: '/gists' },
+]
+
+const menuWithoutSession = [
+  { title: 'SignUp', to: '/sign-up' },
+  { title: 'Login', to: '/login' },
+  { title: 'Home', to: '/' },
 ]
 
 // const menu = [
@@ -31,7 +37,7 @@ const pages = [
 //   { title: 'Gists', to: '/gists', icon: <AccountCircleTwoTone /> },
 // ]
 
-export function Header() {
+export function Header({ session }) {
   const { themeSetter, theme } = useContext(ThemeContext)
 
   return (
@@ -49,6 +55,14 @@ export function Header() {
         >
           dark
         </Button>
+        {!!session && (
+          <Button
+            onClick={() => signOut(auth)}
+            style={{ color: theme.theme.color }}
+          >
+            out
+          </Button>
+        )}
         <hr />
         <Toolbar disableGutters>
           <Typography
@@ -61,16 +75,29 @@ export function Header() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
-            {pages.map(({ to, title }) => (
-              <Button
-                key={title}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link className={styles.link} to={to}>
-                  {title}
-                </Link>
-              </Button>
-            ))}
+            {!!session &&
+              menuWithSession.map(({ to, title }) => (
+                <Button
+                  key={title}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  <Link className={styles.link} to={to}>
+                    {title}
+                  </Link>
+                </Button>
+              ))}
+
+            {!session &&
+              menuWithoutSession.map(({ to, title }) => (
+                <Button
+                  key={title}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  <Link className={styles.link} to={to}>
+                    {title}
+                  </Link>
+                </Button>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
