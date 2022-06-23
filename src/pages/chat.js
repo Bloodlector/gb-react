@@ -1,9 +1,17 @@
 import styles from './chat.module.css'
-import { useEffect } from 'react'
+import {
+  useEffect,
+  // memo,
+  // PureComponent,
+  // useCallback,
+  // Component,
+  // useState,
+} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { MessageList, Layout, ChatList } from '../components'
 import { getConversations } from '../store/conversations'
+import { getMessages } from '../store/messages'
 
 export const ChatPage = () => {
   const navigate = useNavigate()
@@ -12,6 +20,8 @@ export const ChatPage = () => {
   const conversations = useSelector(
     (state) => state.conversations.conversations
   )
+
+  const messages = useSelector((state) => state.messages.messages)
 
   useEffect(() => {
     const listener = ({ code }) => {
@@ -30,6 +40,12 @@ export const ChatPage = () => {
       dispatch(getConversations())
     }
   }, [dispatch, conversations])
+
+  useEffect(() => {
+    if (!Object.keys(messages).length) {
+      dispatch(getMessages())
+    }
+  }, [dispatch, messages])
 
   return (
     <Routes>
